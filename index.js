@@ -135,6 +135,8 @@ function moveBall(){
     if(ball.y-ball.size<10&&ball.x>=bar.x&&ball.x<bar.x+(bar.w)/2)
     {
         ball.dy*=-1;
+        var angle = -1 * Math.PI / 4;
+        ball.dx*=Math.sin(angle);
         score1++;
         // set to initial state0
         // ball.x=w/2;
@@ -144,11 +146,15 @@ function moveBall(){
     // when ball hit at second half if bar
     else if(ball.y-ball.size<10&&ball.x>bar.x+(bar.w/2)&&ball.x<=bar.x+bar.w)
     {
-
+        ball.dy*=-1;
+        var angle = Math.PI / 4;;
+        ball.dx*=Math.sin(angle);
     }
     else if(ball.y-ball.size<10&&ball.x===bar.x+(bar.w)/2)
     {
-        // 180 deg rotate
+        // midlle hit 180 deg rotation
+        ball.dx*=0;
+        ball.dy*=-1;
     }
     else if(ball.y-ball.size<0){
         // console.log("ball.x=",ball.x);
@@ -169,13 +175,13 @@ function moveBall(){
 
         
         
-        // clear();
-        // ball.x=w/2;
-        // ball.y=h-20;
-        // bar.x=w/2-100;
-        // drawBall();
-        // drawBars();
-        // cancelAnimationFrame(moveBall);
+        clear();
+        ball.x=w/2;
+        ball.y=h-20;
+        bar.x=w/2-100;
+        drawBall();
+        drawBars();
+        cancelAnimationFrame(moveBall);
        
     }
     if(ball.y+ball.size>=h-10&&ball.x>bar.x&&ball.x<bar.x+bar.w){
